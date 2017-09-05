@@ -15,7 +15,7 @@
       </div>
       <audio id="audio" style="display: none;" @ended="musicEnd" @canplay="setMusicDuration"
              @timeupdate="setCurrentTime"
-             src="http://music.163.com/song/media/outer/url?id=4017240.mp3"
+             src="http://music.163.com/song/media/outer/url?id=29460377.mp3"
              controls="controls">
       </audio>
       <div id="volume">
@@ -50,7 +50,6 @@
         this.$store.dispatch('play_Pre')
       },
       musicEnd () {
-        console.log('play end')
         this.$store.dispatch('play_Ended')
       },
       setMusicDuration () {
@@ -60,7 +59,6 @@
         this.$store.dispatch('set_CurrentTime', document.querySelector('audio').currentTime)
       },
       changeCurrentTime () {
-        console.log('change: ' + document.getElementById('musicProgress').value)
         this.$store.dispatch('change_CurrentTime', document.getElementById('musicProgress').value)
       }
     },
@@ -107,13 +105,13 @@
   @import "/static/css/btn.css";
   @import "/static/css/volume_controller.css";
 
-    #bottomPlayer{
-      width: 100%;
-      height:50px;
-      border: 1px solid #4682B4;
-      bottom: 0px;
-
-    }
+  #bottomPlayer{
+    width: 100%;
+    height:50px;
+    border: 1px solid #4682B4;
+    bottom: 0px;
+    background-color: #f6f6f8;
+  }
 
   img{
     height: 40px;
@@ -121,19 +119,19 @@
     margin: 5px auto;
   }
 
-    a{
-      width: 80px;
-      height: 40px;
-      margin: 5px 20px;
-    }
+  a{
+    width: 80px;
+    height: 40px;
+    margin: 5px 20px;
+  }
 
-    #playBtns{
-      width: 25%;
-      height: 50px;
-      display: inline-block;
-      float: left;
-      border: 1px solid #000000;
-    }
+  #playBtns{
+    width: 20%;
+    height: 50px;
+    display: inline-block;
+    float: left;
+    border: 1px solid #000000;
+  }
 
   #volume{
     width: 15%;
@@ -145,6 +143,7 @@
   #volumeBar{
     margin: 10px auto;
     height: 25px;
+    width: 90%;
   }
 
   #currentProgress,
@@ -155,7 +154,7 @@
   }
 
   #progressBar{
-    width: 60%;
+    width: 65%;
     height: 100%;
     display: inline-block;
     border: 1px solid #000000;
@@ -175,14 +174,13 @@
   input[id=musicProgress]{
     -webkit-appearance: none;
     width: 100%;
-    border-radius: 10px;
   }
 
   input[id=musicProgress]::-webkit-slider-thumb{
     -webkit-appearance: none;
     border: 1px solid #000000;
-    height: 20px;
-    width: 20px;
+    height: 16px;
+    width: 16px;
     border-radius: 90px;
     background-color: #ffffff;
     cursor: pointer;
@@ -192,8 +190,8 @@
 
   input[id=musicProgress]::-moz-range-thumb {
     border: 1px solid #000000;
-    height: 20px;
-    width: 20px;
+    height: 16px;
+    width: 16px;
     border-radius: 90px;
     background-color: #ffffff;
     cursor: pointer;
@@ -202,8 +200,8 @@
 
   input[id=musicProgress]::-ms-thumb {
     border: 1px solid #000000;
-    height: 20px;
-    width: 20px;
+    height: 16px;
+    width: 16px;
     border-radius: 90px;
     background-color: #ffffff;
     cursor: pointer;
@@ -227,6 +225,7 @@
     background-color: #3071a9;
     border-radius: 1px;
     border: 0.2px solid #010101;
+    margin-top: 10px;
   }
 
   input[id=musicProgress]::-moz-range-track{

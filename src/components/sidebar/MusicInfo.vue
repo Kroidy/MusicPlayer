@@ -1,9 +1,9 @@
 <template>
-    <div id="info">
-      <img id="currentMusic" src=""/>
+    <div id="info" @click="goToMusicDetail">
+      <img id="currentMusicImg" :src="getCurrentMusicInfo[2]"/>
       <ul>
-        <li id="musicName">dfsd</li>
-        <li id="composer">dfsd</li>
+        <li>{{getCurrentMusicInfo[0]}}</li>
+        <li>{{getCurrentMusicInfo[1]}}</li>
       </ul>
     </div>
 </template>
@@ -13,7 +13,16 @@
     name: 'hello',
     data () {
       return {
-        msg: 'Welcome to Your Vue.js App'
+      }
+    },
+    computed: {
+      getCurrentMusicInfo () {
+        return this.$store.getters.getCurrentMusicInfo
+      }
+    },
+    methods: {
+      goToMusicDetail () {
+        return this.$store.dispatch('toggle_IsShow')
       }
     }
   }
@@ -33,21 +42,20 @@
     float: right;
     list-style-type: none;
     height: 100%;
-    width: 120px;
+    width: 70%;
+    border: 1px solid #000000;
   }
 
   li{
     margin: 5px auto;
+    font-size: 10px;
+    border: 1px solid #B22222;
+    text-align: center;
+    margin-left: -20px;
   }
 
-
-
-  #currentMusic{
-    width: 60px;
+  #currentMusicImg{
+    width: 30%;
     height: 100%;
-  }
-
-  #musicinfo{
-    width: 120px;
   }
 </style>

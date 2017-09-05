@@ -4,6 +4,7 @@
     <side-navbar></side-navbar>
     <router-view></router-view>
     <player></player>
+    <music-detail></music-detail>
   </div>
 </template>
 
@@ -14,6 +15,7 @@
   import topBar from './components/top_title/TopBar.vue'
   import mySongListPanel from './components/main_area/MySongListPanel.vue'
   import axios from 'axios'
+  import musicDetail from './components/main_area/MusicDetail.vue'
 
 export default {
     name: 'app',
@@ -22,12 +24,13 @@ export default {
       localMusicPanel,
       sideNavbar,
       topBar,
-      mySongListPanel
+      mySongListPanel,
+      musicDetail
     },
     created () {
       let allSongs = 'static/musicdata.json'
       axios.get(allSongs).then((res) => {
-        this.$store.dispatch('set_AllSongLists', res.data.all)
+        this.$store.dispatch('set_AllSongs', res.data.all)
         this.$store.dispatch('set_MyFavorite', res.data.myFavorite)
         this.$store.dispatch('set_CurrentPlayList', res.data.myFavorite)
       }, (err) => { alert(err) })
